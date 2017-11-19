@@ -1,13 +1,13 @@
 
-public class CurrentUser {
+class CurrentUser {
 
-    public static String username = "";
+    static String username = "";
 
-    public static String getCurrentUser(){
+    static String getCurrentUser(){
         return username;
     }
 
-    public static void setCurrentUser(String user){
+    static void setCurrentUser(String user){
         username = user;
     }
 }

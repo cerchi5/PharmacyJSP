@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Database {
     private String url = "jdbc:mysql://localhost:3306/pharmacy?autoReconnect=true&useSSL=false";
-    private String user = "public";
-    private String pass = "public";
+    private String user = "cerchi";
+    private String pass = "cerchi";
 
     private static Connection conn;
     private static Statement st;
@@ -26,7 +26,7 @@ public class Database {
 
             rs = st.executeQuery("select * from pharmacy.users;");
             while(rs.next()) {
-                System.out.println(rs.getString("idUsers") + " " + rs.getString("Username") + " " + rs.getString("Password"));
+                System.out.println(rs.getString("idUsers") + " " + rs.getString("Email") + " " + rs.getString("Password"));
             }
 
         }catch(Exception e){
@@ -34,14 +34,34 @@ public class Database {
         }
     }
 
-    public static boolean verifyUser(String user, String pass){
+    public static boolean verifyUser(String mail, String pass){
         try{
 
             rs = st.executeQuery("select * from pharmacy.users;");
             while(rs.next()) {
                 //System.out.println(rs.getString("idUsers") + " " + rs.getString("Username") + " " + rs.getString("Password"));
-                if(rs.getString("Username").compareTo(user) == 0 && rs.getString("Password").compareTo(pass) == 0)
+                if(rs.getString("Email").compareTo(mail) == 0 && rs.getString("Password").compareTo(pass) == 0)
                     return true;
+            }
+            return false;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean verifyStaff(String mail, String pass){
+        try{
+
+            rs = st.executeQuery("select * from pharmacy.users;");
+            while(rs.next()) {
+                //System.out.println(rs.getString("idUsers") + " " + rs.getString("Username") + " " + rs.getString("Password"));
+                if(rs.getString("Email").compareTo(mail) == 0 && rs.getString("Password").compareTo(pass) == 0)
+                    if(rs.getInt("Staff") == 1)
+                        return true;
+                    else return false;
             }
             return false;
 
@@ -56,7 +76,7 @@ public class Database {
         try{
             rs = st.executeQuery("select * from pharmacy.users;");
             while(rs.next()) {
-                if(rs.getString("Username").compareTo(mail) == 0)
+                if(rs.getString("Email").compareTo(mail) == 0)
                     return true;
             }
         }catch(Exception e){
@@ -69,7 +89,7 @@ public class Database {
     public static void addUser(String email, String password) {
         try {
             String a = "'" + email + "','" + password + "'";
-            PreparedStatement ps = conn.prepareStatement("insert into pharmacy.users(Username,Password) values (" + a + ");");
+            PreparedStatement ps = conn.prepareStatement("insert into pharmacy.users(Email,Password) values (" + a + ");");
             ps.executeUpdate();
 
         }catch(Exception e){

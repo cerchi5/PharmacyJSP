@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: cerch
-  Date: 14-Nov-17
-  Time: 12:21 AM
+  Date: 18-Nov-17
+  Time: 2:36 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">PHARMACY</a>
+                <p>PHARMACY</p>
             </div>
 
             <!-- Menu Items -->
@@ -46,7 +46,7 @@
                         <form action="HomeServlet" method="post">
                             <button type="submit" name="searchDrugs">Search Drugs</button>
                             <button type="submit" name="verifyCode">Verify a Code</button>
-                            <button type="submit" name="contact">Contact</button>
+                            <button type="submit" name="order">Order drugs</button>
                         </form>
                     </li>
                 </ul>
@@ -59,9 +59,12 @@
         </div>
     </nav>
 
-    <!--
-            content pe home, adica dupa log in
-        -->
+
+    //if content from search or blank
+    /// !! searchdrug button in nav  ??easy??
+    <%
+
+    %>
 
 </body>
 </html>

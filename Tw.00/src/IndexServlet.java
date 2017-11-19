@@ -12,23 +12,28 @@ public class IndexServlet extends HttpServlet {
     Database db = new Database();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher rdStay = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher rdGo = request.getRequestDispatcher("/Home.jsp");
 
         if(request.getParameter("loginButton") != null){
-            String user = request.getParameter("usernameLogin"), pass = request.getParameter("passwordLogin");
+            String user = request.getParameter("emailLogin"), pass = request.getParameter("passwordLogin");
             System.out.println(user + "   " + pass);
 
             if(db.verifyUser(user,pass)){
 
                 CurrentUser.setCurrentUser(user);
                 System.out.println(CurrentUser.username);
-                //rd.forward(request, response);
+                if(db.verifyStaff(user,pass)) {
+                    request.setAttribute("currentUser", CurrentUser.getCurrentUser());
+                    rdGo = request.getRequestDispatcher("/staff.jsp");
+                    rdGo.forward(request, response);
+                }
+                request.setAttribute("currentUser",CurrentUser.getCurrentUser());
+                rdGo.forward(request, response);
                 // forward next page
+            }else{
+                request.setAttribute("active",null);
+                rdStay.forward(request,response);
             }
         } else if(request.getParameter("registerButton") != null){
 
@@ -37,12 +42,12 @@ public class IndexServlet extends HttpServlet {
             if(db.searchEmail(email)){
                 request.setAttribute("errorMessage", "Email already exists");
                 request.setAttribute("active"," active open");
-                rd.forward(request, response);
+                rdStay.forward(request, response);
             }else {
                 if (request.getParameter("passwordRegister").compareTo(request.getParameter("confirmPasswordRegister")) != 0){
                     request.setAttribute("errorMessage", "Passwords aren't the same");
                     request.setAttribute("active"," open");
-                    rd.forward(request, response);
+                    rdStay.forward(request, response);
                 }
                 else{
                     //ok register
@@ -51,10 +56,17 @@ public class IndexServlet extends HttpServlet {
                     CurrentUser.setCurrentUser(email);
                     request.setAttribute("active",null);
                     //forward new page !!!!!!!!
+                    request.setAttribute("currentUser",CurrentUser.getCurrentUser());
+                    rdGo.forward(request, response);
                 }
             }
             System.out.println(request.getAttribute("errorMessage"));
         }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 
 
     }

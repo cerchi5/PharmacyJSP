@@ -1,8 +1,10 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Calendar" %><%--
   Created by IntelliJ IDEA.
   User: cerch
-  Date: 14-Nov-17
-  Time: 12:21 AM
+  Date: 19-Nov-17
+  Time: 1:41 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,6 +21,17 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var auto_refresh = setInterval(
+            function ()
+            {
+                $('#load_me').load('specialServlet').fadeIn("slow");
+            }, 10000);
+    </script>
 
     <title>Pharmacy</title>
 </head>
@@ -58,10 +71,37 @@
             </div>
         </div>
     </nav>
+    <br><br><br><br><br><br><br>
+    <form action="SearchClientServlet" method="post">
+        <input type="text" name="searchField" placeholder="Type the name of drug">
+        <button type="submit" name="searchButton">Search</button>
+    </form>
 
-    <!--
-            content pe home, adica dupa log in
-        -->
+
+    <div id="load_me">
+            
+
+
+        <%
+            // Set refresh, autoload time as 5 seconds
+            response.setIntHeader("Refresh", 5);
+
+            // Get current time
+            Calendar calendar = new GregorianCalendar();
+            String am_pm;
+
+            int hour = calendar.get(Calendar.HOUR);
+            int minute = calendar.get(Calendar.MINUTE);
+            int second = calendar.get(Calendar.SECOND);
+
+            if(calendar.get(Calendar.AM_PM) == 0)
+                am_pm = "AM";
+            else
+                am_pm = "PM";
+            String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
+            out.println("Crrent Time: " + CT + "\n");
+        %>
+    </div>
 
 </body>
 </html>

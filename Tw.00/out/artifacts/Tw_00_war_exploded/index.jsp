@@ -1,6 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.lang.reflect.Array" %>
-<%@ page import="java.lang.reflect.Field" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -46,7 +44,7 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
 
             <!-- Dropwdown login/register right side -->
@@ -56,7 +54,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register<span class="caret"></span></a>
                     <ul class="dropdown-menu" >
                         <p><h5 style="color :#d43f3a ; text-align:center;"><%out.print(y);%></h5></p>
-                        <form action="IndexServlet" method="GET">
+                        <form action="IndexServlet" method="POST">
                             <input type="text" name="emailRegister" placeholder="Type your email">
                             <input type="password" name="passwordRegister" placeholder="Type your password">
                             <input type="password" name="confirmPasswordRegister" placeholder="Confirm password">
@@ -68,7 +66,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <form action="IndexServlet" method="GET">
+                        <form action="IndexServlet" method="POST">
                             <input type="text" name="emailLogin" placeholder="Type your username">
                             <input type="password" name="passwordLogin" placeholder="Type your password">
                             <button name="loginButton"type="submit" style ="width: 100%;">Log In </button>

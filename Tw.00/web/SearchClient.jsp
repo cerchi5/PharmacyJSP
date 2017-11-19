@@ -1,8 +1,10 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Calendar" %><%--
   Created by IntelliJ IDEA.
   User: cerch
-  Date: 14-Nov-17
-  Time: 12:21 AM
+  Date: 19-Nov-17
+  Time: 1:41 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,6 +21,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <title>Pharmacy</title>
 </head>
@@ -58,10 +61,16 @@
             </div>
         </div>
     </nav>
+    <br><br><br><br><br><br><br>
+    <form action="SearchClientServlet" method="post">
+        <input type="text" name="searchField" placeholder="Type the name of drug">
+        <button type="submit" name="searchButton">Search</button>
+    </form>
 
-    <!--
-            content pe home, adica dupa log in
-        -->
+
+    <div id="load_me">
+
+    </div>
 
 </body>
 </html>
