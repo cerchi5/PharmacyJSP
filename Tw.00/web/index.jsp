@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css\stylesheet.css">
 
 
     <!-- jQuery library -->
@@ -57,10 +57,17 @@
                     <ul class="dropdown-menu" >
                         <p><h5 style="color :#d43f3a ; text-align:center;"><%out.print(y);%></h5></p>
                         <form action="IndexServlet" method="POST">
-                            <input type="text" name="emailRegister" placeholder="Type your email">
-                            <input type="password" name="passwordRegister" placeholder="Type your password">
-                            <input type="password" name="confirmPasswordRegister" placeholder="Confirm password">
-                            <button name="registerButton" type="submit" style ="width: 100%;">Register </button>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="emailRegister" placeholder="Type your email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="passwordRegister" placeholder="Type your password">
+                                <small class="form-text text-muted">Repeat password</small>
+                                <input type="password" class="form-control" name="confirmPasswordRegister" placeholder="Repeat password">
+                            </div>
+                            <button class="btn btn-primary center-block" name="registerButton" type="submit">Register </button>
                         </form>
                     </ul>
                 </li>
@@ -69,9 +76,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <form action="IndexServlet" method="POST">
-                            <input type="text" name="emailLogin" placeholder="Type your username">
-                            <input type="password" name="passwordLogin" placeholder="Type your password">
-                            <button name="loginButton"type="submit" style ="width: 100%;">Log In </button>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="text" name="emailLogin" placeholder="Type your email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" name="passwordLogin" placeholder="Type your password">
+                            </div>
+                            <button class="btn btn-primary center-block" name="loginButton" type="submit" >Login </button>
                         </form>
                     </ul>
                 </li>
@@ -118,10 +131,10 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="algocalmin.jpg" height="500" width="800" alt="">
                 <div class="caption">
-                    <h3>Feature Item</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <h3>Algocalmin</h3>
+                    <p>Algocalmin ameliorează durerea şi reduce temperatura corpului în caz de febră. </p>
                     <p>
                         <a href="#" class="btn btn-primary">Buy Now!</a>
                     </p>
@@ -131,10 +144,10 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="strepsils.jpg" height="500" width="800" alt="">
                 <div class="caption">
-                    <h3>Feature Item</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <h3>Strepsils</h3>
+                    <p>Strepsils Intensiv Miere Şi Lămâie ajută la calmarea durerii şi a inflamaţiei gâtului.</p>
                     <p>
                         <a href="#" class="btn btn-primary">Buy Now!</a>
                     </p>
@@ -144,10 +157,10 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="nurofen.jpg" alt="">
                 <div class="caption">
-                    <h3>Feature Item</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <h3>Nurofen</h3>
+                    <p>Actioneaza prin schimbarea raspunsului organismului la durere, inflamatie si febra.</p>
                     <p>
                         <a href="#" class="btn btn-primary">Buy Now!</a>
                     </p>
@@ -157,16 +170,18 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
+                <img src="imodium.jpg" height="500" width="800" alt="">
                 <div class="caption">
-                    <h3>Feature Item</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <h3>Imodium</h3>
+                    <p>Imodium este indicat in tratamentul simptomatic al diareei acute si cronice.</p>
                     <p>
                         <a href="#" class="btn btn-primary">Buy Now!</a>
                     </p>
                 </div>
             </div>
         </div>
+
+    </div>
 
     </div>
 </div>

@@ -13,7 +13,7 @@
      <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
      <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+     <link rel="stylesheet" type="text/css" href="css\stylesheet.css">
 
      <!-- jQuery library -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -49,7 +49,6 @@
                          <input type="text" class="form-control" placeholder="Search">
                          <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
                          <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
-                         <button class="btn btn-success" type="submit" name="order">Order drugs</button>
                      </form>
                  </li>
              </ul>
@@ -98,10 +97,10 @@
 
          <div class="col-md-3 col-sm-6 hero-feature">
              <div class="thumbnail">
-                 <img src="http://placehold.it/800x500" alt="">
+                 <img src="algocalmin.jpg" height="500" width="800" alt="">
                  <div class="caption">
-                     <h3>Feature Item</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                     <h3>Algocalmin</h3>
+                     <p>Algocalmin ameliorează durerea şi reduce temperatura corpului în caz de febră. </p>
                      <p>
                          <a href="#" class="btn btn-primary">Buy Now!</a>
                      </p>
@@ -111,10 +110,10 @@
 
          <div class="col-md-3 col-sm-6 hero-feature">
              <div class="thumbnail">
-                 <img src="http://placehold.it/800x500" alt="">
+                 <img src="strepsils.jpg" height="500" width="800" alt="">
                  <div class="caption">
-                     <h3>Feature Item</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                     <h3>Strepsils</h3>
+                     <p>Strepsils Intensiv Miere Şi Lămâie ajută la calmarea durerii şi a inflamaţiei gâtului.</p>
                      <p>
                          <a href="#" class="btn btn-primary">Buy Now!</a>
                      </p>
@@ -124,10 +123,10 @@
 
          <div class="col-md-3 col-sm-6 hero-feature">
              <div class="thumbnail">
-                 <img src="http://placehold.it/800x500" alt="">
+                 <img src="nurofen.jpg" alt="">
                  <div class="caption">
-                     <h3>Feature Item</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                     <h3>Nurofen</h3>
+                     <p>Actioneaza prin schimbarea raspunsului organismului la durere, inflamatie si febra.</p>
                      <p>
                          <a href="#" class="btn btn-primary">Buy Now!</a>
                      </p>
@@ -137,10 +136,10 @@
 
          <div class="col-md-3 col-sm-6 hero-feature">
              <div class="thumbnail">
-                 <img src="http://placehold.it/800x500" alt="">
+                 <img src="imodium.jpg" height="500" width="800" alt="">
                  <div class="caption">
-                     <h3>Feature Item</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                     <h3>Imodium</h3>
+                     <p>Imodium este indicat in tratamentul simptomatic al diareei acute si cronice.</p>
                      <p>
                          <a href="#" class="btn btn-primary">Buy Now!</a>
                      </p>
