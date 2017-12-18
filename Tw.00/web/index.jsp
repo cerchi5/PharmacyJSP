@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -60,11 +59,9 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" class="form-control" name="emailRegister" placeholder="Type your email">
-                            </div>
-                            <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="passwordRegister" placeholder="Type your password">
-                                <small class="form-text text-muted">Repeat password</small>
+                                <label>Repeat password</label>
                                 <input type="password" class="form-control" name="confirmPasswordRegister" placeholder="Repeat password">
                             </div>
                             <button class="btn btn-primary center-block" name="registerButton" type="submit">Register </button>
@@ -100,7 +97,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-4">
-            <img class="img-responsive" src="home1.png">
+            <img class="img-responsive" src="photos/home1.png">
         </div>
         <div class="col-md-8">
             <div class="jumbotron">
@@ -131,7 +128,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="algocalmin.jpg" height="500" width="800" alt="">
+                <img src="photos/algocalmin.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Algocalmin</h3>
                     <p>Algocalmin ameliorează durerea şi reduce temperatura corpului în caz de febră. </p>
@@ -144,7 +141,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="strepsils.jpg" height="500" width="800" alt="">
+                <img src="photos/strepsils.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Strepsils</h3>
                     <p>Strepsils Intensiv Miere Şi Lămâie ajută la calmarea durerii şi a inflamaţiei gâtului.</p>
@@ -157,7 +154,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="nurofen.jpg" alt="">
+                <img src="photos/nurofen.jpg" alt="">
                 <div class="caption">
                     <h3>Nurofen</h3>
                     <p>Actioneaza prin schimbarea raspunsului organismului la durere, inflamatie si febra.</p>
@@ -170,7 +167,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="imodium.jpg" height="500" width="800" alt="">
+                <img src="photos/imodium.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Imodium</h3>
                     <p>Imodium este indicat in tratamentul simptomatic al diareei acute si cronice.</p>
@@ -182,9 +179,6 @@
         </div>
 
     </div>
-
-    </div>
-</div>
 
 <!-- Footer -->
 <br><br><br>

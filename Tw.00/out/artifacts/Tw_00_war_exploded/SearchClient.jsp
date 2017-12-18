@@ -1,12 +1,6 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.GregorianCalendar" %>
-<%@ page import="java.util.Calendar" %><%--
-  Created by IntelliJ IDEA.
-  User: cerch
-  Date: 19-Nov-17
-  Time: 1:41 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.classes.Drug" %>
+<%@ page import="com.classes.CurrentUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,93 +9,170 @@
     <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript">
-
-        var auto_refresh = setInterval(
-            function ()
-            {
-                $('#load_me').load('specialServlet').fadeIn("slow");
-            }, 10000);
+    <script>
+        function increment(name){
+            var nameVar = name + 'quantity';
+            var x = document.getElementById(nameVar);
+            var numberX = x.innerHTML;
+            if(numberX != 10) {
+                numberX++;
+            }
+            x.innerHTML = numberX;
+        }
+        function decrement(name){
+            var nameVar = name + 'quantity';
+            var x = document.getElementById(nameVar);
+            var numberX = x.innerHTML;
+            if(numberX != 0) {
+                numberX--;
+            }
+            x.innerHTML = numberX;
+        }
     </script>
-
     <title>Pharmacy</title>
 </head>
 <body>
-    <%
-        String user = (String) request.getAttribute("currentUser");
-    %>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
+<%
+    String user = CurrentUser.username;
+    ArrayList<Drug> drugs = (ArrayList<com.classes.Drug>) request.getAttribute("resultList");
+    session.setAttribute("resultList",drugs);
+%>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
 
-            <!-- Logo -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">PHARMACY</a>
-            </div>
+        <!-- Logo -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/Home.jsp" class="navbar-brand">PHARMACY</a>
+        </div>
 
-            <!-- Menu Items -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="nav navbar-nav">
+        <!-- Menu Items -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
+                        <input type="text" class="form-control" placeholder="Search" name="searchField">
+                        <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
+                        <button class="btn btn-info" type="submit" name="verifyCode">Verify Code</button>
+                        <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form method="post" action="NavBarServlet">
+                        <button type="submit" name="cartButton">Cart</button>
+                    </form>
+                </li>  <!-- AICI CU IMG SI POZA CART SI DROPDOWN CU ITEMS -->
+                <li><a href="#">Hello,<%out.print(user);%></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br><br><br><br><br><br>
+//verify code !!! !!! // new db // generate + verify code
+
+//staffPage !!!!!!!!!!!!!!
+<%
+    if(drugs != null){
+        out.print("<table>");
+        out.print("<tr>");
+        out.print("<th>ID</th>");
+        out.print("<th>Name</th>");
+        out.print("<th>Recommended Dose</th>");
+        out.print("<th>Category</th>");
+        out.print("<th>Specification</th>");
+        out.print("<th>Price</th>");
+        out.print("<th>Stock</th>");
+        out.print("</tr>");
+
+        for(Drug x : drugs){
+            out.print("<tr>");
+            out.print("<td>" + x.getId() + "</td>");
+            out.print("<td>" + x.getName() + "</td>");
+            out.print("<td>" + x.getRecommendedDose() + "</td>");
+            out.print("<td>" + x.getCategory() + "</td>");
+            out.print("<td>" + x.getSpecs() + "</td>");
+            out.print("<td>" + x.getPrice() + " RON </td>");
+
+            out.print("<td>");
+            //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
+            out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=\"10\" value=\"0\"/>");
+            //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
+            out.print("</td>");
+            // nu merge
+
+            out.print("</tr>");
+        }
+        out.print("</table>");
+    }else{
+        out.print("<p>NU ESTE!!!</p>");
+    }
+
+%>
+
+<form action="/SearchClientServlet" method="POST">
+    <button type="submit" name="addButton">Add to cart</button>
+</form>
+
+
+<br><br><br>
+<footer id="Contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <ul class="adress">
+                    <span>Adress</span>
                     <li>
-                        <form action="HomeServlet" method="post">
-                            <button type="submit" name="searchDrugs">Search Drugs</button>
-                            <button type="submit" name="verifyCode">Verify a Code</button>
-                            <button type="submit" name="contact">Contact</button>
-                        </form>
+                        <p>Str. Ion Rusu Sirianu Nr. 2</p>
+                    </li>
+                    <li>
+                        <p>Oficiu postal: 400234</p>
+                    </li>
+                    <li>
+                        <p>Timisoara, Romania</p>
                     </li>
                 </ul>
+            </div>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><h4>Hello,<%out.print(user);%></h4></li>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <ul class="contact" id="About">
+                    <span>Contact</span>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#About">About</a>
+                    </li>
                 </ul>
+            </div>
 
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <ul class="adress">
+                    <span>About us</span>
+                    <li>
+                        <p>CC Pharmacy is a British pharmacy company, with more than 1,500 pharmacies. It has around 17,000 staff and dispenses over 150 million prescription items annually.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom-layout">
+                <div>Copyright © 2017 CC Pharmacy. All Rights Reserved.</div>
             </div>
         </div>
-    </nav>
-    <br><br><br><br><br><br><br>
-    <form action="SearchClientServlet" method="post">
-        <input type="text" name="searchField" placeholder="Type the name of drug">
-        <button type="submit" name="searchButton">Search</button>
-    </form>
-
-
-    <div id="load_me">
-            
-
-
-        <%
-            // Set refresh, autoload time as 5 seconds
-            response.setIntHeader("Refresh", 5);
-
-            // Get current time
-            Calendar calendar = new GregorianCalendar();
-            String am_pm;
-
-            int hour = calendar.get(Calendar.HOUR);
-            int minute = calendar.get(Calendar.MINUTE);
-            int second = calendar.get(Calendar.SECOND);
-
-            if(calendar.get(Calendar.AM_PM) == 0)
-                am_pm = "AM";
-            else
-                am_pm = "PM";
-            String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
-            out.println("Crrent Time: " + CT + "\n");
-        %>
     </div>
+</footer>
 
 </body>
 </html>
