@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
@@ -70,11 +70,78 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form method="post" action="NavBarServlet">
-                        <button type="submit" name="cartButton">Cart</button>
-                    </form>
-                </li>  <!-- AICI CU IMG SI POZA CART SI DROPDOWN CU ITEMS -->
+
+                <!--  CART and DROPDOWN ITEMS -->
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="badge">3</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-cart" role="menu">
+                        <form action="NavBarServlet" method="post">
+                            <li>
+                                <div class="item">
+                                    <div class="item-left">
+                                        <img src="http://lorempixel.com/50/50/" alt="" />
+                                        <div class="item-info">
+                                            <span>Item name</span>
+                                            <span><small class="form-text text-muted">Quantity: </small>1x</span>
+                                            <span><small class="form-text text-muted">Price: </small>23$</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-right">
+                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <div class="item-left">
+                                        <img src="http://lorempixel.com/50/50/" alt="" />
+                                        <div class="item-info">
+                                            <span>Item name</span>
+                                            <span><small class="form-text text-muted">Quantity: </small>2x</span>
+                                            <span><small class="form-text text-muted">Price: </small>23$</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-right">
+                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <div class="item-left">
+                                        <img src="http://lorempixel.com/50/50/" alt="" />
+                                        <div class="item-info">
+                                            <span>Item name</span>
+                                            <span><small class="form-text text-muted">Quantity: </small>3x</span>
+                                            <span><small class="form-text text-muted">Price: </small>23$</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-right">
+                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="text-center">
+                                <p><strong>Total</strong>: $0.00</p>
+                            </li>
+                            <li class="text-center">
+                                <button class="btn btn-primary btn-block" type="submit" name="cartButton">Cart</button>
+                            </li>
+                        </form>
+                    </ul>
+                </li>
+
                 <li><a href="#">Hello,<%out.print(user);%></a></li>
             </ul>
         </div>
@@ -87,8 +154,9 @@
 //staffPage !!!!!!!!!!!!!!
 <%
     if(drugs != null){
-        out.print("<table>");
-        out.print("<tr>");
+        out.print("<table class='table-bordered'>");
+        out.print("<thead>");
+        out.print("<tr class='active'>");
         out.print("<th>ID</th>");
         out.print("<th>Name</th>");
         out.print("<th>Recommended Dose</th>");
@@ -97,9 +165,11 @@
         out.print("<th>Price</th>");
         out.print("<th>Stock</th>");
         out.print("</tr>");
+        out.print("</thead>");
 
         for(Drug x : drugs){
-            out.print("<tr>");
+            out.print("<tbody>");
+            out.print("<tr class='active'>");
             out.print("<td>" + x.getId() + "</td>");
             out.print("<td>" + x.getName() + "</td>");
             out.print("<td>" + x.getRecommendedDose() + "</td>");
@@ -115,6 +185,7 @@
             // nu merge
 
             out.print("</tr>");
+            out.print("</tbody>");
         }
         out.print("</table>");
     }else{
@@ -124,7 +195,7 @@
 %>
 
 <form action="/SearchClientServlet" method="POST">
-    <button type="submit" name="addButton">Add to cart</button>
+    <button class="btn btn-primary" type="submit" name="addButton">Add to cart</button>
 </form>
 
 
