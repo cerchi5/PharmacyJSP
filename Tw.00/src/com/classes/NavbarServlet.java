@@ -21,7 +21,7 @@ public class NavbarServlet extends HttpServlet {
 
         //Search Drugs
         if(request.getParameter("searchDrugs") != null){
-            rd = request.getRequestDispatcher("/SearchClient.jsp");
+            rd = request.getRequestDispatcher("/client/SearchClient.jsp");
             //System.out.println("Go to SearchClient.jsp");
             request.setAttribute("currentUser", CurrentUser.getCurrentUser());
             String field = request.getParameter("searchField");
@@ -34,7 +34,7 @@ public class NavbarServlet extends HttpServlet {
                     request.setAttribute("resultList",x);
                 }
             }else{
-                rd = request.getRequestDispatcher("/Home.jsp");
+                rd = request.getRequestDispatcher("/client/Home.jsp");
                 rd.forward(request,response);
             }
 
@@ -43,13 +43,13 @@ public class NavbarServlet extends HttpServlet {
 
         // Verify code
         if(request.getParameter("verifyCode") != null){
-            rd = request.getRequestDispatcher("/VerifyCode.jsp");
+            rd = request.getRequestDispatcher("/client/VerifyCode.jsp");
             rd.forward(request,response);
         }
 
         // Cart page
         if(request.getParameter("cartButton") != null){
-            rd = request.getRequestDispatcher("/CartPage.jsp");
+            rd = request.getRequestDispatcher("/client/CartPage.jsp");
             rd.forward(request,response);
         }
     }

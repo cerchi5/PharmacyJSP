@@ -15,7 +15,7 @@ public class IndexServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rdStay = request.getRequestDispatcher("/index.jsp");
-        RequestDispatcher rdGo = request.getRequestDispatcher("/Home.jsp");
+        RequestDispatcher rdGo = request.getRequestDispatcher("/client/Home.jsp");
 
         if(request.getParameter("loginButton") != null){
 
@@ -31,7 +31,7 @@ public class IndexServlet extends HttpServlet {
                 //System.out.println(CurrentUser.username);
                 if(db.verifyStaff(user,pass)) {
                     request.setAttribute("currentUser", CurrentUser.getCurrentUser());
-                    rdGo = request.getRequestDispatcher("/staff.jsp");
+                    rdGo = request.getRequestDispatcher("/staff/staff.jsp");
                     rdGo.forward(request, response);
                 }
                 request.setAttribute("currentUser",CurrentUser.getCurrentUser());

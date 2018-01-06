@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -67,7 +67,8 @@
     -->
 
 <br><br><br><br><br>
-<p>MUIE MA ASDASJKFBASFA</p>
+<p>table all products</p>
+
 
 </body>
 </html>

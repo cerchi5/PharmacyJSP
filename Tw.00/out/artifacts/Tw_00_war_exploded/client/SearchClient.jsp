@@ -1,6 +1,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.classes.Drug" %>
 <%@ page import="com.classes.CurrentUser" %>
+<%@ page import="com.classes.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +10,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -41,8 +42,11 @@
 <body>
 <%
     String user = CurrentUser.username;
+    int numberOfProducts = Cart.getNumberOfProducts();
     ArrayList<Drug> drugs = (ArrayList<com.classes.Drug>) request.getAttribute("resultList");
     session.setAttribute("resultList",drugs);
+    double total = Cart.getTotal();
+    ArrayList<Drug> cart = Cart.getDrugs();
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -54,7 +58,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/Home.jsp" class="navbar-brand">PHARMACY</a>
+            <a href="#" class="navbar-brand">CC PHARMACY</a>
         </div>
 
         <!-- Menu Items -->
@@ -64,7 +68,7 @@
                     <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
                         <input type="text" class="form-control" placeholder="Search" name="searchField">
                         <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-info" type="submit" name="verifyCode">Verify Code</button>
+                        <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
                         <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
                     </form>
                 </li>
@@ -76,18 +80,24 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                         <span class="glyphicon glyphicon-shopping-cart"></span>
-                        <span class="badge">3</span>
+                        <span class="badge"><% out.print(numberOfProducts); %></span>
                     </a>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
                         <form action="NavBarServlet" method="post">
+
+
+                            <%
+                                for(Drug x : cart){
+                            %>
+
                             <li>
                                 <div class="item">
                                     <div class="item-left">
                                         <img src="http://lorempixel.com/50/50/" alt="" />
                                         <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>1x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
+                                            <span><% out.print(x.getName()); %></span>
+                                            <span><small class="form-text text-muted">Quantity: </small><% out.print(x.getQuantity());%>x</span>
+                                            <span><small class="form-text text-muted">Price: </small><% out.print(x.getActualPrice()); %>$</span>
                                         </div>
                                     </div>
                                     <div class="item-right">
@@ -97,43 +107,14 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="item">
-                                    <div class="item-left">
-                                        <img src="http://lorempixel.com/50/50/" alt="" />
-                                        <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>2x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
-                                        </div>
-                                    </div>
-                                    <div class="item-right">
-                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item">
-                                    <div class="item-left">
-                                        <img src="http://lorempixel.com/50/50/" alt="" />
-                                        <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>3x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
-                                        </div>
-                                    </div>
-                                    <div class="item-right">
-                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
+                            <%
+                                }
+                            %>
+
+
                             <li class="divider"></li>
                             <li class="text-center">
-                                <p><strong>Total</strong>: $0.00</p>
+                                <p><strong>Total</strong>: RON <% out.print(total); %></p>
                             </li>
                             <li class="text-center">
                                 <button class="btn btn-primary btn-block" type="submit" name="cartButton">Cart</button>
@@ -152,6 +133,7 @@
 //verify code !!! !!! // new db // generate + verify code
 
 //staffPage !!!!!!!!!!!!!!
+<form action="/SearchClientServlet" method="POST">
 <%
     if(drugs != null){
         out.print("<table class='table-bordered'>");
@@ -194,7 +176,6 @@
 
 %>
 
-<form action="/SearchClientServlet" method="POST">
     <button class="btn btn-primary" type="submit" name="addButton">Add to cart</button>
 </form>
 

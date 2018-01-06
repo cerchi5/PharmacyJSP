@@ -1,4 +1,7 @@
 <%@ page import="com.classes.CurrentUser" %>
+<%@ page import="com.classes.Cart" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.classes.Drug" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,9 +21,12 @@
     <title>Pharmacy</title>
 </head>
 <body>
-<!-- <%
+    <%
         String user = CurrentUser.username;
-    %> -->
+        int numberOfProducts = Cart.getNumberOfProducts();
+        double total = Cart.getTotal();
+        ArrayList<Drug> cart = Cart.getDrugs();
+    %>
 <div id="Home"></div>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -54,18 +60,24 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                         <span class="glyphicon glyphicon-shopping-cart"></span>
-                        <span class="badge">3</span>
+                        <span class="badge"><% out.print(numberOfProducts); %></span>
                     </a>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
                         <form action="NavBarServlet" method="post">
+
+
+                            <%
+                                for(Drug x : cart){
+                            %>
+
                             <li>
                                 <div class="item">
                                     <div class="item-left">
                                         <img src="http://lorempixel.com/50/50/" alt="" />
                                         <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>1x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
+                                            <span><% out.print(x.getName()); %></span>
+                                            <span><small class="form-text text-muted">Quantity: </small><% out.print(x.getQuantity());%>x</span>
+                                            <span><small class="form-text text-muted">Price: </small><% out.print(x.getActualPrice()); %>$</span>
                                         </div>
                                     </div>
                                     <div class="item-right">
@@ -75,43 +87,14 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="item">
-                                    <div class="item-left">
-                                        <img src="http://lorempixel.com/50/50/" alt="" />
-                                        <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>2x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
-                                        </div>
-                                    </div>
-                                    <div class="item-right">
-                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item">
-                                    <div class="item-left">
-                                        <img src="http://lorempixel.com/50/50/" alt="" />
-                                        <div class="item-info">
-                                            <span>Item name</span>
-                                            <span><small class="form-text text-muted">Quantity: </small>3x</span>
-                                            <span><small class="form-text text-muted">Price: </small>23$</span>
-                                        </div>
-                                    </div>
-                                    <div class="item-right">
-                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
+                            <%
+                            }
+                            %>
+
+
                             <li class="divider"></li>
                             <li class="text-center">
-                                <p><strong>Total</strong>: $0.00</p>
+                                <p><strong>Total</strong>: RON <% out.print(total); %></p>
                             </li>
                             <li class="text-center">
                                 <button class="btn btn-primary btn-block" type="submit" name="cartButton">Cart</button>
@@ -131,7 +114,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-4">
-            <img class="img-responsive" src="photos/home1.png">
+            <img class="img-responsive" src="../photos/home1.png">
         </div>
         <div class="col-md-8">
             <div class="jumbotron">
@@ -162,7 +145,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="photos/algocalmin.jpg" height="500" width="800" alt="">
+                <img src="../photos/algocalmin.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Algocalmin</h3>
                     <p>Algocalmin ameliorează durerea şi reduce temperatura corpului în caz de febră. </p>
@@ -175,7 +158,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="photos/strepsils.jpg" height="500" width="800" alt="">
+                <img src="../photos/strepsils.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Strepsils</h3>
                     <p>Strepsils Intensiv Miere Şi Lămâie ajută la calmarea durerii şi a inflamaţiei gâtului.</p>
@@ -188,7 +171,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="photos/nurofen.jpg" alt="">
+                <img src="../photos/nurofen.jpg" alt="">
                 <div class="caption">
                     <h3>Nurofen</h3>
                     <p>Actioneaza prin schimbarea raspunsului organismului la durere, inflamatie si febra.</p>
@@ -201,7 +184,7 @@
 
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-                <img src="photos/imodium.jpg" height="500" width="800" alt="">
+                <img src="../photos/imodium.jpg" height="500" width="800" alt="">
                 <div class="caption">
                     <h3>Imodium</h3>
                     <p>Imodium este indicat in tratamentul simptomatic al diareei acute si cronice.</p>

@@ -1,48 +1,30 @@
-<%@ page import="java.util.*" %>
-<%@ page import="com.classes.Drug" %>
 <%@ page import="com.classes.CurrentUser" %>
+<%@ page import="com.classes.Cart" %>
+<%@ page import="com.classes.Drug" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-        function increment(name){
-            var nameVar = name + 'quantity';
-            var x = document.getElementById(nameVar);
-            var numberX = x.innerHTML;
-            if(numberX != 10) {
-                numberX++;
-            }
-            x.innerHTML = numberX;
-        }
-        function decrement(name){
-            var nameVar = name + 'quantity';
-            var x = document.getElementById(nameVar);
-            var numberX = x.innerHTML;
-            if(numberX != 0) {
-                numberX--;
-            }
-            x.innerHTML = numberX;
-        }
-    </script>
     <title>Pharmacy</title>
 </head>
 <body>
 <%
     String user = CurrentUser.username;
-    ArrayList<Drug> drugs = (ArrayList<com.classes.Drug>) request.getAttribute("resultList");
-    session.setAttribute("resultList",drugs);
+    int numberOfProducts = Cart.getNumberOfProducts();
+    double total = Cart.getTotal();
+    ArrayList<Drug> cart = Cart.getDrugs();
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -54,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/Home.jsp" class="navbar-brand">PHARMACY</a>
+            <a href="#" class="navbar-brand">CC PHARMACY</a>
         </div>
 
         <!-- Menu Items -->
@@ -64,68 +46,72 @@
                     <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
                         <input type="text" class="form-control" placeholder="Search" name="searchField">
                         <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-info" type="submit" name="verifyCode">Verify Code</button>
+                        <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
                         <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
                     </form>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form method="post" action="NavBarServlet">
-                        <button type="submit" name="cartButton">Cart</button>
-                    </form>
-                </li>  <!-- AICI CU IMG SI POZA CART SI DROPDOWN CU ITEMS -->
+
+                <!--  CART and DROPDOWN ITEMS -->
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="badge"><% out.print(numberOfProducts); %></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-cart" role="menu">
+                        <form action="NavBarServlet" method="post">
+
+
+                            <%
+                                for(Drug x : cart){
+                            %>
+
+                            <li>
+                                <div class="item">
+                                    <div class="item-left">
+                                        <img src="http://lorempixel.com/50/50/" alt="" />
+                                        <div class="item-info">
+                                            <span><% out.print(x.getName()); %></span>
+                                            <span><small class="form-text text-muted">Quantity: </small><% out.print(x.getQuantity());%>x</span>
+                                            <span><small class="form-text text-muted">Price: </small><% out.print(x.getActualPrice()); %>$</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-right">
+                                        <button type="button" class="close" data-dismiss="item" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <%
+                                }
+                            %>
+
+
+                            <li class="divider"></li>
+                            <li class="text-center">
+                                <p><strong>Total</strong>: RON <% out.print(total); %></p>
+                            </li>
+                            <li class="text-center">
+                                <button class="btn btn-primary btn-block" type="submit" name="cartButton">Cart</button>
+                            </li>
+                        </form>
+                    </ul>
+                </li>
+
                 <li><a href="#">Hello,<%out.print(user);%></a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<br><br><br><br><br><br>
-//verify code !!! !!! // new db // generate + verify code
-
-//staffPage !!!!!!!!!!!!!!
-<%
-    if(drugs != null){
-        out.print("<table>");
-        out.print("<tr>");
-        out.print("<th>ID</th>");
-        out.print("<th>Name</th>");
-        out.print("<th>Recommended Dose</th>");
-        out.print("<th>Category</th>");
-        out.print("<th>Specification</th>");
-        out.print("<th>Price</th>");
-        out.print("<th>Stock</th>");
-        out.print("</tr>");
-
-        for(Drug x : drugs){
-            out.print("<tr>");
-            out.print("<td>" + x.getId() + "</td>");
-            out.print("<td>" + x.getName() + "</td>");
-            out.print("<td>" + x.getRecommendedDose() + "</td>");
-            out.print("<td>" + x.getCategory() + "</td>");
-            out.print("<td>" + x.getSpecs() + "</td>");
-            out.print("<td>" + x.getPrice() + " RON </td>");
-
-            out.print("<td>");
-            //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
-            out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=\"10\" value=\"0\"/>");
-            //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
-            out.print("</td>");
-            // nu merge
-
-            out.print("</tr>");
-        }
-        out.print("</table>");
-    }else{
-        out.print("<p>NU ESTE!!!</p>");
-    }
-
-%>
-
-<form action="/SearchClientServlet" method="POST">
-    <button type="submit" name="addButton">Add to cart</button>
+<form method="post" action="VerifyCodeServlet">
+    <input type="text" name="textVerifyCode">
+    <button type="submit" name="submitCode">Search</button>
 </form>
+
 
 
 <br><br><br>
