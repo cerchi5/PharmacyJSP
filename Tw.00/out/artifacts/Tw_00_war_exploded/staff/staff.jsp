@@ -67,7 +67,8 @@
     -->
 
 <br><br><br><br><br>
-<p>MUIE MA ASDASJKFBASFA</p>
+<p>table all products</p>
+
 
 </body>
 </html>

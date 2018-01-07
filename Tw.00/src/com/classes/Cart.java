@@ -7,16 +7,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cart {
-    private static ArrayList<Drug> drugs;
-    private static int total;
+    private static ArrayList<Drug> drugs = new ArrayList<Drug>();
+    private static double total = 0;
+    private static int numberOfProducts = 0;
 
     public static void checkout(){
         // generate email
+
+
+        // create json
         //
         //
-        //
+
+
         resetDrugs();
         resetTotal();
+        resetNumberOfProducts();
     }
 
     public static ArrayList<Drug> getDrugs() {
@@ -29,10 +35,20 @@ public class Cart {
 
     public static void addDrug(Drug drug) {
         drugs.add(drug);
-
+        incrementTotal(drug.getActualPrice() * drug.getQuantity());
+        incrementNumberOfProducts();
     }
 
-    public static int getTotal() {
+    public static void removeDrug(Drug drug){
+        decrementTotal(drug.getActualPrice() * drug.getQuantity());
+        decrementNumberOfProducts();
+        drugs.remove(drug);
+    }
+    public static void decrementTotal(double totalAux){
+        total -= totalAux;
+    }
+
+    public static double getTotal() {
         return total;
     }
 
@@ -40,7 +56,21 @@ public class Cart {
         total = 0;
     }
 
-    public static void addTotal(int totalAux) {
+    public static void incrementTotal(double totalAux) {
         total += totalAux;
     }
+
+    public static int getNumberOfProducts() {
+        return numberOfProducts;
+    }
+
+    public static void incrementNumberOfProducts() {
+        Cart.numberOfProducts++;
+    }
+
+    public static void decrementNumberOfProducts() {
+        Cart.numberOfProducts--;
+    }
+
+    public static void resetNumberOfProducts(){ Cart.numberOfProducts = 0; }
 }

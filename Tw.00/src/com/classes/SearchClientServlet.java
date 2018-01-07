@@ -26,21 +26,18 @@ public class SearchClientServlet extends HttpServlet {
             int auxInt;
             HttpSession session = request.getSession();
             ArrayList<Drug> drugs = (ArrayList<Drug>) session.getAttribute("resultList");
-            System.out.println(drugs);
+            //System.out.println(drugs);
             for(Drug x : drugs){
                 auxName = x.getName() + "quantity";
-                System.out.println(auxName + "     " + request.getParameter(auxName));
+                //System.out.println(auxName + "     " + request.getParameter(auxName));
                 auxInt = Integer.parseInt(request.getParameter(auxName));
                 if(auxInt != 0){
                     x.setQuantity(auxInt);
                     Cart.addDrug(x);
                 }
             }
-            if(Cart.getDrugs().size() != 0){
-                System.out.println(Cart.getDrugs());
-            }else System.out.println("MARE");
 
-            rd = request.getRequestDispatcher("/Home.jsp");
+            rd = request.getRequestDispatcher("/client/Home.jsp");
             rd.forward(request,response);
         }
     }
