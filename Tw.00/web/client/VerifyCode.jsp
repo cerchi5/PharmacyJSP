@@ -124,7 +124,7 @@
 <footer id="Contact">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="adress">
                     <span>Adress</span>
                     <li>
@@ -139,7 +139,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="contact" id="About">
                     <span>Contact</span>
                     <li>
@@ -148,10 +148,16 @@
                     <li>
                         <a href="#About">About</a>
                     </li>
+                    <li>
+                        <a href="#">Email: ccpharmacy@pharmacy.com</a>
+                    </li>
+                    <li>
+                        <a href="#">Phone: 0721384923</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="adress">
                     <span>About us</span>
                     <li>
