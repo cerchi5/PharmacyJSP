@@ -221,10 +221,10 @@
                         <a href="#About">About</a>
                     </li>
                     <li>
-                        <a href="#">Email: ccpharmacy@pharmacy.com</a>
+                        <a href="#About">Email: ccpharmacy@pharmacy.com</a>
                     </li>
                     <li>
-                        <a href="#">Phone: 0721384923</a>
+                        <a href="#About">Phone: 0721384923</a>
                     </li>
                 </ul>
             </div>
