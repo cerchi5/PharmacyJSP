@@ -52,7 +52,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="dropdown<%out.print(active);%>" >
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Register <span class="caret"></span></a>
                     <ul class="dropdown-menu" >
                         <p><h5 style="color :#d43f3a ; text-align:center;"><%out.print(y);%></h5></p>
                         <form action="IndexServlet" method="POST">
@@ -70,10 +70,11 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <form action="IndexServlet" method="POST">
                             <div class="form-group">
+                                <h3 class="text-center"><strong>Login</strong></h3>
                                 <label>Email</label>
                                 <input class="form-control" type="text" name="emailLogin" placeholder="Type your email">
                             </div>

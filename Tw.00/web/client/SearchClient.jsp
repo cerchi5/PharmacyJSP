@@ -164,7 +164,6 @@
             out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=\"10\" value=\"0\"/>");
             //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
             out.print("</td>");
-            // nu merge
 
             out.print("</tr>");
             out.print("</tbody>");
