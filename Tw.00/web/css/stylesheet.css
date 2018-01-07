@@ -110,3 +110,6 @@ ul.dropdown-cart li .item-right{
 ul.dropdown-cart li .item-right button{
     margin-top:14px;
 }
+button, input, select, textarea {
+    height: 34px;
+}

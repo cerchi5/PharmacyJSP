@@ -42,15 +42,21 @@
         <!-- Menu Items -->
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="nav navbar-nav">
-                <li>
-                    <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
-                        <input type="text" class="form-control" placeholder="Search" name="searchField">
-                        <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
-                        <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
-                    </form>
-                </li>
+                <li><a href="#Contact" name="contact">Contact</a></li>
             </ul>
+
+            <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="searchField">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" name="searchDrugs">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
+            </form>
+
             <ul class="nav navbar-nav navbar-right">
 
                 <!--  CART and DROPDOWN ITEMS -->

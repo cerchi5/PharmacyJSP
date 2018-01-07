@@ -98,6 +98,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-4">
+            <br><br>
             <img class="img-responsive" src="photos/home1.png">
         </div>
         <div class="col-md-8">
