@@ -139,19 +139,20 @@
 //verify code !!! !!! // new db // generate + verify code
 
 //staffPage !!!!!!!!!!!!!!
+<div class="container">
 <form action="/SearchClientServlet" method="POST">
 <%
     if(drugs != null){
-        out.print("<table class='table-bordered'>");
+        out.print("<table class='table-bordered text-center'>");
         out.print("<thead>");
         out.print("<tr class='active'>");
-        out.print("<th>ID</th>");
-        out.print("<th>Name</th>");
-        out.print("<th>Recommended Dose</th>");
-        out.print("<th>Category</th>");
-        out.print("<th>Specification</th>");
-        out.print("<th>Price</th>");
-        out.print("<th>Stock</th>");
+        out.print("<th class='text-center'>ID</th>");
+        out.print("<th class='text-center'>Name</th>");
+        out.print("<th class='text-center'>Recommended Dose</th>");
+        out.print("<th class='text-center'>Category</th>");
+        out.print("<th class='text-center'>Specification</th>");
+        out.print("<th class='text-center'>Price</th>");
+        out.print("<th class='text-center'>Stock</th>");
         out.print("</tr>");
         out.print("</thead>");
 
@@ -176,14 +177,14 @@
         }
         out.print("</table>");
     }else{
-        out.print("<p>NU ESTE!!!</p>");
+        out.print("<h2><strong>NU ESTE!!!</strong</h2>");
     }
 
 %>
 
-    <button class="btn btn-primary" type="submit" name="addButton">Add to cart</button>
+    <button class="btn btn-primary btn-block btn-lg" type="submit" name="addButton">Add to cart</button>
 </form>
-
+</div>
 
 <br><br><br>
 <footer id="Contact">
