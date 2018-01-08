@@ -44,15 +44,21 @@
         <!-- Menu Items -->
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="nav navbar-nav">
-                <li>
-                    <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
-                        <input type="text" class="form-control" placeholder="Search" name="searchField">
-                        <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
-                        <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
-                    </form>
-                </li>
+                <li><a href="#Contact" name="contact" >Contact</a></li>
             </ul>
+
+            <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="searchField">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" name="searchDrugs">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
+            </form>
+
             <ul class="nav navbar-nav navbar-right">
 
                 <!--  CART and DROPDOWN ITEMS -->
@@ -110,10 +116,45 @@
 </nav>
 
 <!-- Home content -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="photos/carousel3.jpg" >
+            </div>
+
+            <div class="item">
+                <img src="photos/carousel2.jpg" >
+            </div>
+
+            <div class="item">
+                <img src="photos/carousel1.jpg" >
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
 <br><br><br>
 <div class="container">
     <div class="row text-center">
         <div class="col-md-4">
+            <br><br>
             <img class="img-responsive" src="../photos/home1.png">
         </div>
         <div class="col-md-8">
@@ -200,50 +241,56 @@
 
 <!-- Footer -->
 <br><br><br>
-<footer id="Contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <ul class="adress">
-                    <span>Adress</span>
-                    <li>
-                        <p>Str. Ion Rusu Sirianu Nr. 2</p>
-                    </li>
-                    <li>
-                        <p>Oficiu postal: 400234</p>
-                    </li>
-                    <li>
-                        <p>Timisoara, Romania</p>
-                    </li>
-                </ul>
-            </div>
+    <footer id="Contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="adress">
+                        <span>Adress</span>
+                        <li>
+                            <p>Str. Ion Rusu Sirianu Nr. 2</p>
+                        </li>
+                        <li>
+                            <p>Oficiu postal: 400234</p>
+                        </li>
+                        <li>
+                            <p>Timisoara, Romania</p>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <ul class="contact" id="About">
-                    <span>Contact</span>
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#About">About</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="contact" id="About">
+                        <span>Contact</span>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#About">About</a>
+                        </li>
+                        <li>
+                            <a href="#About">Email: ccpharmacy@pharmacy.com</a>
+                        </li>
+                        <li>
+                            <a href="#About">Phone: 0721384923</a>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <ul class="adress">
-                    <span>About us</span>
-                    <li>
-                        <p>CC Pharmacy is a British pharmacy company, with more than 1,500 pharmacies. It has around 17,000 staff and dispenses over 150 million prescription items annually.</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-bottom-layout">
-                <div>Copyright © 2017 CC Pharmacy. All Rights Reserved.</div>
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="adress">
+                        <span>About us</span>
+                        <li>
+                            <p>CC Pharmacy is a British pharmacy company, with more than 1,500 pharmacies. It has around 17,000 staff and dispenses over 150 million prescription items annually.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-layout">
+                    <div>Copyright © 2017 CC Pharmacy. All Rights Reserved.</div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 </body>
 </html>

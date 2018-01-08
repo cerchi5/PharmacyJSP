@@ -117,6 +117,49 @@ public class Database {
         return false;
     }
 
+    public static ArrayList<Drug> getDrugs(){
+        try{
+            ArrayList<Drug> drugs = new ArrayList<Drug>();
+            rs = st.executeQuery("select * from pharmacy.drugs;");
+            int id,rd,stock;
+            String name,category,specs;
+            double price,ap;
+            Date exp;
+            while(rs.next()) {
+                id = rs.getInt("iddrugs");
+                name = rs.getString("drugName");
+                rd = rs.getInt("drugRecommendedDose");
+                category = rs.getString("drugCategory");
+                specs = rs.getString("drugSpecs");
+                price = rs.getDouble("drugPrice");
+                ap = rs.getDouble("drugActualPrice");
+                stock = rs.getInt("drugStock");
+                exp = rs.getDate("drugExp");
+                drugs.add(new Drug(id,name,rd,category,specs,price,ap,stock,exp));
+            }
+            return drugs;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void checkoutDrug(Drug drug){
+        try{
+            rs = st.executeQuery("select * from pharmacy.drugs;");
+            while(rs.next()){
+                if(rs.getString("drugName").compareTo(drug.getName()) == 0){
+                    int auxStock = rs.getInt("drugStock") - drug.getQuantity();
+                    Statement ss = conn.createStatement();
+                    ss.execute("UPDATE pharmacy.drugs SET drugStock =" + auxStock +" WHERE drugName ='" + drug.getName() + "';");
+                    System.out.println(auxStock);
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static void addUser(String email, String password) {
         try {
             String a = "'" + email + "','" + password + "'";

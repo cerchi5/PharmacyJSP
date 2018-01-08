@@ -25,6 +25,12 @@
     int numberOfProducts = Cart.getNumberOfProducts();
     double total = Cart.getTotal();
     ArrayList<Drug> cart = Cart.getDrugs();
+
+    String error = "";
+    if(request.getAttribute("errorCode") != null) {
+        error = request.getAttribute("errorCode").toString();
+        request.setAttribute("errorCode",null);
+    }
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -113,11 +119,11 @@
     </div>
 </nav>
 
+<h3><% out.print(error); %></h3>
 <form method="post" action="VerifyCodeServlet">
     <input type="text" name="textVerifyCode">
     <button type="submit" name="submitCode">Search</button>
 </form>
-
 
 
 <br><br><br>

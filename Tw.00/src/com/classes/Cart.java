@@ -10,15 +10,18 @@ public class Cart {
     private static ArrayList<Drug> drugs = new ArrayList<Drug>();
     private static double total = 0;
     private static int numberOfProducts = 0;
+    public static String code = "";
 
-    public static void checkout(){
+    public static void checkout(ArrayList<Drug> drugs){
         // generate email
 
 
         // create json
         //
         //
-
+        JSONcreator.createFile(drugs);
+        System.out.println(JSONcreator.readFile(code));
+        JSONcreator.verifyCode(code);
 
         resetDrugs();
         resetTotal();
@@ -27,6 +30,10 @@ public class Cart {
 
     public static ArrayList<Drug> getDrugs() {
         return drugs;
+    }
+
+    public static void setDrugs (ArrayList<Drug> drugs){
+        Cart.drugs = drugs;
     }
 
     public static void resetDrugs(){

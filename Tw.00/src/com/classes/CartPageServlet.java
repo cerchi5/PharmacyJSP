@@ -15,7 +15,7 @@ public class CartPageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("checkoutButton") != null){
-            Cart.checkout();
+            Cart.checkout(Cart.getDrugs());
             rd = request.getRequestDispatcher("/client/Home.jsp");
             rd.forward(request,response);
         }else

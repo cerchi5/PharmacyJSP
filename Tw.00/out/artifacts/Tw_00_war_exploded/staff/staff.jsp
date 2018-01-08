@@ -1,10 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cerch
-  Date: 18-Nov-17
-  Time: 2:36 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.classes.Database" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.classes.Drug" %>
+<%@ page import="com.classes.CurrentUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -14,20 +11,24 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <title>Pharmacy</title>
 </head>
 <body>
-<!-- <%
-        String user = (String) request.getAttribute("currentUser");
-    %> -->
+    <%
+        String user = CurrentUser.username;
+        ArrayList<Drug> drugs;
+        if(request.getAttribute("resultList") == null)
+            drugs = Database.getDrugs();
+        else
+            drugs = (ArrayList<Drug>) request.getAttribute("resultList");
+    %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
 
@@ -38,38 +39,131 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">PHARMACY</a>
+            <a href="#" class="navbar-brand">CC PHARMACY</a>
         </div>
 
         <!-- Menu Items -->
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <form action="HomeServlet" method="post" class="navbar-form navbar-left">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-info" type="submit" name="verifyCode">Verify Code</button>
-                        <button class="btn btn-success" type="submit" name="order">Order drugs</button>
-                    </form>
-                </li>
-            </ul>
+            <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="searchFieldStaff">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" name="searchDrugsStaff">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" name="verifyCodeStaff">Verify Code</button>
+                <button class="btn btn-primary" type="submit" name="orderDrugs">Order Drugs</button>
+                <button class="btn btn-primary" type="submit" name="discountButton">Discounts</button>
+            </form>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Hello,<%out.print(user);%></a></li>
             </ul>
-
-
         </div>
     </div>
 </nav>
 
-<!--
-        content pe home, adica dupa log in
-    -->
-
 <br><br><br><br><br>
-<p>table all products</p>
+
+    <%
+        if(drugs != null){
+            out.print("<table class='table-bordered text-center'>");
+            out.print("<thead>");
+            out.print("<tr class='active'>");
+            out.print("<th class='text-center'>ID</th>");
+            out.print("<th class='text-center'>Name</th>");
+            out.print("<th class='text-center'>Recommended Dose</th>");
+            out.print("<th class='text-center'>Category</th>");
+            out.print("<th class='text-center'>Specification</th>");
+            out.print("<th class='text-center'>Price</th>");
+            out.print("<th class='text-center'>Stock</th>");
+            out.print("<th class='text-center'>Quantity</th>");
+            out.print("</tr>");
+            out.print("</thead>");
+
+            for(Drug x : drugs){
+                out.print("<tbody>");
+                out.print("<tr class='active'>");
+                out.print("<td>" + x.getId() + "</td>");
+                out.print("<td>" + x.getName() + "</td>");
+                out.print("<td>" + x.getRecommendedDose() + "</td>");
+                out.print("<td>" + x.getCategory() + "</td>");
+                out.print("<td>" + x.getSpecs() + "</td>");
+                out.print("<td>" + x.getActualPrice() + " RON </td>");
+                out.print("<td>" + x.getStock() + "</td>");
+
+                out.print("<td>");
+                //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
+                out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=" + x.getStock() + " value=\"0\"/>");
+                //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
+                out.print("</td>");
+
+                out.print("</tr>");
+                out.print("</tbody>");
+            }
+            out.print("</table>");
+        }else{
+            out.print("<h2><strong>NU ESTE!!!</strong</h2>");
+        }
+
+    %>
+
+    <button>Add to cart</button>
+    <button>Checkout</button>
 
 
+    <footer id="Contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="adress">
+                        <span>Adress</span>
+                        <li>
+                            <p>Str. Ion Rusu Sirianu Nr. 2</p>
+                        </li>
+                        <li>
+                            <p>Oficiu postal: 400234</p>
+                        </li>
+                        <li>
+                            <p>Timisoara, Romania</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="contact" id="About">
+                        <span>Contact</span>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#About">About</a>
+                        </li>
+                        <li>
+                            <a href="#About">Email: ccpharmacy@pharmacy.com</a>
+                        </li>
+                        <li>
+                            <a href="#About">Phone: 0721384923</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <ul class="adress">
+                        <span>About us</span>
+                        <li>
+                            <p>CC Pharmacy is a British pharmacy company, with more than 1,500 pharmacies. It has around 17,000 staff and dispenses over 150 million prescription items annually.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-layout">
+                    <div>Copyright © 2017 CC Pharmacy. All Rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
 

@@ -64,15 +64,21 @@
         <!-- Menu Items -->
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="nav navbar-nav">
-                <li>
-                    <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
-                        <input type="text" class="form-control" placeholder="Search" name="searchField">
-                        <button class="btn btn-default" type="submit" name="searchDrugs">Search</button>
-                        <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
-                        <button class="btn btn-success" type="button" name="contact" onClick="javascript: document.location.href='#Contact'">Contact</button>
-                    </form>
-                </li>
+                <li><a href="#Contact" name="contact">Contact</a></li>
             </ul>
+
+            <form action="NavBarServlet" method="post" class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="searchField">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" name="searchDrugs">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" name="verifyCode">Verify Code</button>
+            </form>
+
             <ul class="nav navbar-nav navbar-right">
 
                 <!--  CART and DROPDOWN ITEMS -->
@@ -130,22 +136,21 @@
 </nav>
 
 <br><br><br><br><br><br>
-//verify code !!! !!! // new db // generate + verify code
-
-//staffPage !!!!!!!!!!!!!!
+<div class="container">
 <form action="/SearchClientServlet" method="POST">
 <%
     if(drugs != null){
-        out.print("<table class='table-bordered'>");
+        out.print("<table class='table-bordered text-center'>");
         out.print("<thead>");
         out.print("<tr class='active'>");
-        out.print("<th>ID</th>");
-        out.print("<th>Name</th>");
-        out.print("<th>Recommended Dose</th>");
-        out.print("<th>Category</th>");
-        out.print("<th>Specification</th>");
-        out.print("<th>Price</th>");
-        out.print("<th>Stock</th>");
+        out.print("<th class='text-center'>ID</th>");
+        out.print("<th class='text-center'>Name</th>");
+        out.print("<th class='text-center'>Recommended Dose</th>");
+        out.print("<th class='text-center'>Category</th>");
+        out.print("<th class='text-center'>Specification</th>");
+        out.print("<th class='text-center'>Price</th>");
+        out.print("<th class='text-center'>Stock</th>");
+        out.print("<th class='text-center'>Quantity</th>");
         out.print("</tr>");
         out.print("</thead>");
 
@@ -157,7 +162,8 @@
             out.print("<td>" + x.getRecommendedDose() + "</td>");
             out.print("<td>" + x.getCategory() + "</td>");
             out.print("<td>" + x.getSpecs() + "</td>");
-            out.print("<td>" + x.getPrice() + " RON </td>");
+            out.print("<td>" + x.getActualPrice() + " RON </td>");
+            out.print("<td>" + x.getStock() + "</td>");
 
             out.print("<td>");
             //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
@@ -170,20 +176,20 @@
         }
         out.print("</table>");
     }else{
-        out.print("<p>NU ESTE!!!</p>");
+        out.print("<h2><strong>NU ESTE!!!</strong</h2>");
     }
 
 %>
 
-    <button class="btn btn-primary" type="submit" name="addButton">Add to cart</button>
+    <button class="btn btn-primary btn-block btn-lg" type="submit" name="addButton">Add to cart</button>
 </form>
-
+</div>
 
 <br><br><br>
 <footer id="Contact">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="adress">
                     <span>Adress</span>
                     <li>
@@ -198,7 +204,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="contact" id="About">
                     <span>Contact</span>
                     <li>
@@ -207,10 +213,16 @@
                     <li>
                         <a href="#About">About</a>
                     </li>
+                    <li>
+                        <a href="#About">Email: ccpharmacy@pharmacy.com</a>
+                    </li>
+                    <li>
+                        <a href="#About">Phone: 0721384923</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <ul class="adress">
                     <span>About us</span>
                     <li>

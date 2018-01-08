@@ -1,6 +1,6 @@
 body {
     min-height: 100%;
-    padding-top: 70px;
+    padding-top: 51px;
     background-color: #008080;
 }
 
@@ -109,4 +109,12 @@ ul.dropdown-cart li .item-right{
 }
 ul.dropdown-cart li .item-right button{
     margin-top:14px;
+}
+button, input, select, textarea {
+    height: 34px;
+}
+
+.carousel-inner > .item > img {
+    width:1920px;
+    height:630px;
 }

@@ -136,9 +136,6 @@
 </nav>
 
 <br><br><br><br><br><br>
-//verify code !!! !!! // new db // generate + verify code
-
-//staffPage !!!!!!!!!!!!!!
 <div class="container">
 <form action="/SearchClientServlet" method="POST">
 <%
@@ -153,6 +150,7 @@
         out.print("<th class='text-center'>Specification</th>");
         out.print("<th class='text-center'>Price</th>");
         out.print("<th class='text-center'>Stock</th>");
+        out.print("<th class='text-center'>Quantity</th>");
         out.print("</tr>");
         out.print("</thead>");
 
@@ -164,7 +162,8 @@
             out.print("<td>" + x.getRecommendedDose() + "</td>");
             out.print("<td>" + x.getCategory() + "</td>");
             out.print("<td>" + x.getSpecs() + "</td>");
-            out.print("<td>" + x.getPrice() + " RON </td>");
+            out.print("<td>" + x.getActualPrice() + " RON </td>");
+            out.print("<td>" + x.getStock() + "</td>");
 
             out.print("<td>");
             //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
