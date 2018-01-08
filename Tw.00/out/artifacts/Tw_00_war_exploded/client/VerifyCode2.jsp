@@ -114,11 +114,13 @@
         </div>
     </div>
 </nav>
-
+<br><br><br>
+<div class="container">
+    <h2 class="text-center">Checkout products</h2><br>
 <%
 
         if(drugs != null){
-        out.print("<table class='table-bordered text-center'>");
+        out.print("<table class='table table-bordered text-center'>");
             out.print("<thead>");
             out.print("<tr class='active'>");
                 out.print("<th class='text-center'>ID</th>");
@@ -151,7 +153,7 @@
         }
 
 %>
-
+</div>
 
 <br><br><br>
 <footer id="Contact">

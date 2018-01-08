@@ -119,12 +119,24 @@
     </div>
 </nav>
 
-<h3><% out.print(error); %></h3>
-<form method="post" action="VerifyCodeServlet">
-    <input type="text" name="textVerifyCode">
-    <button type="submit" name="submitCode">Search</button>
-</form>
+<h3 class="text-center"><% out.print(error); %></h3>
+<br><br><br>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Verify code</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+                <form method="post" action="VerifyCodeServlet">
+                    <input class="form-control" type="text" name="textVerifyCode">
+                    <button class="btn btn-primary" type="submit" name="submitCode">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
+</div>
 
 <br><br><br>
 <footer id="Contact">

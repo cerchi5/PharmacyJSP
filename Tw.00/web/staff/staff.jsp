@@ -85,6 +85,7 @@
             out.print("</thead>");
 
             for(Drug x : drugs){
+                System.out.println(x.getName());
                 out.print("<tbody>");
                 out.print("<tr class='active'>");
                 out.print("<td>" + x.getId() + "</td>");
@@ -97,7 +98,7 @@
 
                 out.print("<td>");
                 //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
-                out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=" + x.getStock() + " value=\"0\"/>");
+                out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" max=\"10\" value=\"0\"/>");
                 //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
                 out.print("</td>");
 
@@ -111,9 +112,10 @@
 
     %>
 
-    
-    <button>Add to cart</button>
-    <button>Checkout</button>
+    <form method="post" action="StaffServlet">
+        <button type="submit" name="addToCart">Add to cart</button>
+        <button type="submit" name="checkoutButton">Checkout</button>
+    </form>
 
 </div>
     <!--

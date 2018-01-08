@@ -25,6 +25,8 @@ public class IndexServlet extends HttpServlet {
 
             Cart.resetDrugs();
             Cart.resetTotal();
+            Cart.resetNumberOfProducts();
+            Cart.code = "";
 
             String user = request.getParameter("emailLogin"), pass = request.getParameter("passwordLogin");
             //System.out.println(user + "   " + pass);
@@ -67,6 +69,11 @@ public class IndexServlet extends HttpServlet {
                     CurrentUser.setCurrentUser(email);
                     request.setAttribute("active",null);
                     //forward new page !!!!!!!!
+                    Cart.resetDrugs();
+                    Cart.resetTotal();
+                    Cart.resetNumberOfProducts();
+                    Cart.code = "";
+
                     request.setAttribute("currentUser",CurrentUser.getCurrentUser());
                     rdGo.forward(request, response);
                 }

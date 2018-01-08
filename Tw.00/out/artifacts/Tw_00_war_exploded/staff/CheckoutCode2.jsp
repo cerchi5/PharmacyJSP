@@ -64,6 +64,9 @@
         </div>
     </div>
 </nav>
+<br><br><br>
+<div class="container">
+    <h2 class="text-center">Checkout products</h2><br>
 <%
 
     if(drugs != null){
@@ -102,9 +105,10 @@
 %>
 
     <form action="CheckoutCodeServlet" method="post">
-        <button type="submit" name="checkoutCode">Checkout</button>
+        <button class="btn btn-primary btn-block btn-lg" type="submit" name="checkoutCode">Checkout</button>
     </form>
 
+</div>
 
 <br><br><br>
 <footer id="Contact">

@@ -29,7 +29,7 @@ public class SearchClientServlet extends HttpServlet {
             System.out.println(drugs);
             for(Drug x : drugs){
                 auxName = x.getName() + "quantity";
-                //System.out.println(auxName + "     " + request.getParameter(auxName));
+                System.out.println(auxName + "     " + request.getParameter(auxName));
                 auxInt = Integer.parseInt(request.getParameter(auxName));
                 if(auxInt != 0){
                     x.setQuantity(auxInt);
