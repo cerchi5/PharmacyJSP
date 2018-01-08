@@ -37,8 +37,10 @@ public class JSONcreator {
         // delete JSON
         String auxCode = Cart.code + ".txt";
         File file = new File("E:/STOP");
+        System.out.println(auxCode);
         for(final File fileEntry : file.listFiles()){
             if(auxCode.compareTo(fileEntry.getName()) == 0) {
+                System.out.println(fileEntry.getName());
                 fileEntry.delete();
                 return;
             }

@@ -110,10 +110,11 @@
 
     %>
 
+    
     <button>Add to cart</button>
     <button>Checkout</button>
     <!--
-        checkout ca si la checkoutdrug db
+        checkout ca si la checkoutdrug db  !!! delete cart redirect bill
         add to cart
     -->
 

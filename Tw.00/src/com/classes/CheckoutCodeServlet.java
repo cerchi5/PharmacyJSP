@@ -23,6 +23,7 @@ public class CheckoutCodeServlet extends HttpServlet {
 
             //delete file JSON
             JSONcreator.deleteJSON();
+            // inca nu
 
             //print bill
 

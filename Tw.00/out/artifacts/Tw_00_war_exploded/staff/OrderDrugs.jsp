@@ -1,4 +1,7 @@
 <%@ page import="com.classes.CurrentUser" %>
+<%@ page import="com.classes.Drug" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.classes.Database" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +21,11 @@
 </head>
 <body>
 
-    <% String user = CurrentUser.username; %>
+    <%
+        String user = CurrentUser.username;
+        ArrayList<Drug> drugs = Database.getDrugs();
+
+    %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
 
@@ -55,8 +62,54 @@
     </div>
 </nav>
 
-<p>send mails to get drugs + quantity</p>
+    <p>send mails to get drugs + quantity</p>
 
+    <%
+        if(drugs != null){
+            out.print("<table class='table-bordered text-center'>");
+            out.print("<thead>");
+            out.print("<tr class='active'>");
+            out.print("<th class='text-center'>ID</th>");
+            out.print("<th class='text-center'>Name</th>");
+            out.print("<th class='text-center'>Recommended Dose</th>");
+            out.print("<th class='text-center'>Category</th>");
+            out.print("<th class='text-center'>Specification</th>");
+            out.print("<th class='text-center'>Price</th>");
+            out.print("<th class='text-center'>Stock</th>");
+            out.print("<th class='text-center'>Quantity</th>");
+            out.print("</tr>");
+            out.print("</thead>");
+
+            for(Drug x : drugs){
+                out.print("<tbody>");
+                out.print("<tr class='active'>");
+                out.print("<td>" + x.getId() + "</td>");
+                out.print("<td>" + x.getName() + "</td>");
+                out.print("<td>" + x.getRecommendedDose() + "</td>");
+                out.print("<td>" + x.getCategory() + "</td>");
+                out.print("<td>" + x.getSpecs() + "</td>");
+                out.print("<td>" + x.getActualPrice() + " RON </td>");
+                out.print("<td>" + x.getStock() + "</td>");
+
+                out.print("<td>");
+                //out.print("<button type=\"button\" onClick=\"decrement('" + x.getName() + "')\">-</button>");
+                out.print("<input name=\"" + x.getName() + "quantity\" id=\"" + x.getName() + "quantity\" type=\"number\" min=\"0\" value=\"0\"/>");
+                //out.print("<button type=\"button\" onClick=\"increment('" + x.getName() + "')\">+</button>");
+                out.print("</td>");
+
+                out.print("</tr>");
+                out.print("</tbody>");
+            }
+            out.print("</table>");
+        }else{
+            out.print("<h2><strong>NU ESTE!!!</strong</h2>");
+        }
+
+    %>
+
+    <form action="OrderDrugsServlet" method="post">
+        <button type="submit" name="orderDrugs">Send order</button>
+    </form>
 
     <footer id="Contact">
         <div class="container">

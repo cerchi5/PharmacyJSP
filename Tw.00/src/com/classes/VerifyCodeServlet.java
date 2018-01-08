@@ -32,7 +32,8 @@ public class VerifyCodeServlet extends HttpServlet {
             String code = request.getParameter("textVerifyCodeStaff");
             if (!JSONcreator.verifyCode(code)) {
                 // array in request
-                request.setAttribute("resultList", JSONcreator.readFile(code));
+                Cart.code = code;
+                request.setAttribute("resultList", JSONcreator.readFile(Cart.code));
                 rd = request.getRequestDispatcher("/staff/CheckoutCode2.jsp");
                 rd.forward(request, response);
             } else {
