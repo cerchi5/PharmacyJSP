@@ -66,10 +66,11 @@
 </nav>
 
 <br><br><br><br><br>
-
+<div class="container">
+    <h2 class="text-center">Drugs</h2><br>
     <%
         if(drugs != null){
-            out.print("<table class='table-bordered text-center'>");
+            out.print("<table class='table table-bordered text-center'>");
             out.print("<thead>");
             out.print("<tr class='active'>");
             out.print("<th class='text-center'>ID</th>");
@@ -113,6 +114,8 @@
     
     <button>Add to cart</button>
     <button>Checkout</button>
+
+</div>
     <!--
         checkout ca si la checkoutdrug db  !!! delete cart redirect bill
         add to cart
