@@ -61,12 +61,12 @@
         </div>
     </div>
 </nav>
-
+<br><br>
     <p>send mails to get drugs + quantity</p>
-
+<div class="container">
     <%
         if(drugs != null){
-            out.print("<table class='table-bordered text-center'>");
+            out.print("<table class='table table-bordered text-center'>");
             out.print("<thead>");
             out.print("<tr class='active'>");
             out.print("<th class='text-center'>ID</th>");
@@ -108,9 +108,10 @@
     %>
 
     <form action="OrderDrugsServlet" method="post">
-        <button type="submit" name="orderDrugs">Send order</button>
+        <button class="btn btn-primary" type="submit" name="orderDrugs">Send order</button>
     </form>
-
+</div>
+<br><br>
     <footer id="Contact">
         <div class="container">
             <div class="row">

@@ -129,7 +129,10 @@
         <div class="panel-body">
             <div class="col-md-offset-3 col-md-6 col-md-offset-3">
                 <form method="post" action="VerifyCodeServlet">
-                    <input class="form-control" type="text" name="textVerifyCode">
+                    <div class="form-group">
+                        <label>Verify code:</label>
+                        <input class="form-control" type="text" name="textVerifyCode">
+                    </div>
                     <button class="btn btn-primary" type="submit" name="submitCode">Search</button>
                 </form>
             </div>

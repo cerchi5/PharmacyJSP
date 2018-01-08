@@ -140,7 +140,7 @@
 <form action="/SearchClientServlet" method="POST">
 <%
     if(drugs != null){
-        out.print("<table class='table-bordered text-center'>");
+        out.print("<table class='table table-bordered text-center'>");
         out.print("<thead>");
         out.print("<tr class='active'>");
         out.print("<th class='text-center'>ID</th>");
@@ -181,7 +181,7 @@
 
 %>
 
-    <button class="btn btn-primary btn-block btn-lg" type="submit" name="addButton">Add to cart</button>
+    <button class="btn btn-primary btn-lg" type="submit" name="addButton">Add to cart</button>
 </form>
 </div>
 
