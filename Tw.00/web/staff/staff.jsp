@@ -65,7 +65,7 @@
     </div>
 </nav>
 
-<br><br><br><br><br>
+<br><br>
 <div class="container">
     <h2 class="text-center">Drugs</h2><br>
     <%
