@@ -112,9 +112,9 @@
 
     %>
 
-    <form method="post" action="StaffServlet">
-        <button type="submit" name="addToCart">Add to cart</button>
-        <button type="submit" name="checkoutButton">Checkout</button>
+    <form class="text-right" method="post" action="StaffServlet">
+        <button class="btn btn-primary btn-lg" type="submit" name="addToCart">Add to cart</button>
+        <button class="btn btn-primary btn-lg" type="submit" name="checkoutButton">Checkout</button>
     </form>
 
 </div>
