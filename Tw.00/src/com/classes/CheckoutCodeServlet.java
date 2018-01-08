@@ -22,7 +22,10 @@ public class CheckoutCodeServlet extends HttpServlet {
             }
 
             //delete file JSON
+            JSONcreator.deleteJSON();
+
             //print bill
+
             request.setAttribute("resultList",null);
             rd = request.getRequestDispatcher("/staff/staff.jsp");
             rd.forward(request,response);

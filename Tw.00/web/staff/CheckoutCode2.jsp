@@ -10,7 +10,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -67,7 +67,7 @@
 <%
 
     if(drugs != null){
-        out.print("<table class='table-bordered text-center'>");
+        out.print("<table class='table table-bordered text-center'>");
         out.print("<thead>");
         out.print("<tr class='active'>");
         out.print("<th class='text-center'>ID</th>");

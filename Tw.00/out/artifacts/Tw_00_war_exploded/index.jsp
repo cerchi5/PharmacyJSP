@@ -216,7 +216,7 @@
         </div>
 
     </div>
-
+</div>
 <!-- Footer -->
 <br><br><br>
     <footer id="Contact">

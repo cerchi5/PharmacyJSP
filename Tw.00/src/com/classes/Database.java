@@ -1,5 +1,6 @@
 package com.classes;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -155,6 +156,7 @@ public class Database {
                     System.out.println(auxStock);
                 }
             }
+
         }catch(Exception e){
             e.printStackTrace();
         }

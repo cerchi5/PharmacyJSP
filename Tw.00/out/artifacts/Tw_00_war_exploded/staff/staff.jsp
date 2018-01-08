@@ -112,7 +112,10 @@
 
     <button>Add to cart</button>
     <button>Checkout</button>
-
+    <!--
+        checkout ca si la checkoutdrug db
+        add to cart
+    -->
 
     <footer id="Contact">
         <div class="container">

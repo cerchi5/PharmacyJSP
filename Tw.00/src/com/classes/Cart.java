@@ -51,6 +51,7 @@ public class Cart {
         decrementNumberOfProducts();
         drugs.remove(drug);
     }
+
     public static void decrementTotal(double totalAux){
         total -= totalAux;
     }

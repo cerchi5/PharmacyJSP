@@ -17,6 +17,10 @@ public class IndexServlet extends HttpServlet {
         RequestDispatcher rdStay = request.getRequestDispatcher("/index.jsp");
         RequestDispatcher rdGo = request.getRequestDispatcher("/client/Home.jsp");
 
+        Cart.resetNumberOfProducts();
+        Cart.resetTotal();
+        Cart.resetDrugs();
+
         if(request.getParameter("loginButton") != null){
 
             Cart.resetDrugs();

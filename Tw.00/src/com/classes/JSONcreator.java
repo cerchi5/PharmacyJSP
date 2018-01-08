@@ -33,6 +33,18 @@ public class JSONcreator {
         return false;
     }
 
+    public static void deleteJSON(){
+        // delete JSON
+        String auxCode = Cart.code + ".txt";
+        File file = new File("E:/STOP");
+        for(final File fileEntry : file.listFiles()){
+            if(auxCode.compareTo(fileEntry.getName()) == 0) {
+                fileEntry.delete();
+                return;
+            }
+        }
+    }
+
     private static JSONObject drugToJSONObject(Drug drug){
         try {
             JSONObject drugAux = new JSONObject();
